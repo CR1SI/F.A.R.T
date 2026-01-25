@@ -3,6 +3,7 @@ F.A.R.T. Site (Project Name)A full-stack sports management and "Pick-Em" platfor
 This project features a robust administrative backend and a modern, reactive frontend.
 
 🚀 Tech Stack
+
 Frontend: Angular (TypeScript)Backend:
 Django (Python)Database: PostgreSQL
 Media Storage: Cloudinary (for team logos and player headshots)
@@ -10,12 +11,14 @@ External Integration: Google Sheets (for supplementary data tracking)
 Hosting: Railway (Backend/API) & GitHub Pages (Frontend)
 
 🏗️ Architecture & "The Backrooms"
+
 The project follows a decoupled architecture ensuring high availability and separation of concerns:
-Deployment: The Django API is hosted on Railway, while the Angular client is served via GitHub Pages.
-Data Flow: The frontend communicates with the Django REST API to fetch data stored in PostgreSQL.
-Asset Management: Dynamic images like player headshots and team logos are managed via Cloudinary for optimized delivery.
+   Deployment: The Django API is hosted on Railway, while the Angular client is served via GitHub Pages.
+   Data Flow: The frontend communicates with the Django REST API to fetch data stored in PostgreSQL.
+   Asset Management: Dynamic images like player headshots and team logos are managed via Cloudinary for optimized delivery.
 
 📱 Key Features
+
 1. Pick-Em & Standings System
    Playoff & Per-Game Logic: Integrated systems for users to make picks for both full playoff brackets and individual regular-season games.
    Live Leaderboard: Real-time updates on user pick accuracy and overall standings.
