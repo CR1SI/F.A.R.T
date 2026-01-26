@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-4nm_5_*3g56s5s4n63q(2q!+h0t^j-x-pkg2=%7i1%0)1j@3i8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ["DJANGO_DEBUG"]
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'fart-production.up.railway.app']
 
 
 # Application definition
