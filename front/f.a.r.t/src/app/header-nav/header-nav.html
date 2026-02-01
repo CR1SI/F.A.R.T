@@ -1,21 +1,23 @@
-<div class="bg-black w-full h-30 top-0 flex justify-center align-middle">
-    <div class="bg-white m-2.5 w-[80%] flex">
-        <div class="my-2 ml-30 mr-2.5 w-[80%] flex">
-            <div class="bg-blue-300 w-[30%]">
-                <img src="" alt="F.A.R.T LOGO" >
+<div class="bg-gray-100 shadow-xl w-full h-20 top-0 flex justify-center align-middle sticky">
+    <div class="flex">
+        <div class="my-2 w-full flex justify-between items-center px-4">
+            <div class="w-55 shrink-0">
+                <img src="assets/art/fartNAME.png" alt="F.A.R.T LOGO" class="w-full h-full object-contain">
             </div>
-            <div class="bg-blue-600 flex self-center h-15 w-[70%]">
-                <ul class="flex flex-row gap-10 justify-center w-full">
-                    <button class="h-[50%] self-center font-[IndustryBaby]" type="button" (click)="onLoginClicked()">STANDINGS</button>
-                    <button class="h-[50%] self-center font-[IndustryBaby]" type="button" (click)="onLoginClicked()">NEWS</button>
-                    <button class="h-[50%] self-center font-[IndustryBaby]" type="button" (click)="onLoginClicked()">TEAMS</button>
-                    <button class="h-[50%] self-center font-[IndustryBaby]" type="button" (click)="onLoginClicked()">SCHEDULE</button>
-                    <button class="h-[50%] self-center font-[IndustryBaby]" type="button" (click)="onLoginClicked()">PICK'EMs</button>
+            <div class="flex items-center h-15 grow mx-4 px-6">
+                <ul class="flex flex-row gap-4 md:gap-6 lg:gap-10 justify-start items-center w-full">
+                    <div class="flex gap-4 md:gap-6 lg:gap-10">
+                        <button id="standingsButton" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer" type="button" (click)="onNavClicked('standingsButton')">STANDINGS</button>
+                        <button id="newsButton" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer" type="button" (click)="onNavClicked('newsButton')">NEWS</button>
+                        <button id="teamsButton" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer" type="button" (click)="onNavClicked('teamsButton')">TEAMS</button>
+                        <button id="scheduleButton" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer" type="button" (click)="onNavClicked('scheduleButton')">SCHEDULE</button>
+                        <button id="pickEmButton" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer" type="button" (click)="onNavClicked('pickEmButton')">PICK'EMs</button>
+                    </div>
+                    <div class="ml-20">
+                        <button id="loginButton" class="font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer" type="button" (click)="onLoginClicked()">LOGIN</button>
+                    </div>
                 </ul>
             </div>
-        </div>
-        <div class="bg-blue-600 h-15 my-2 ml-2.5 mr-30 w-[20%] flex justify-center self-center">
-            <button class="h-[50%] self-center font-[IndustryBaby]" type="button" (click)="onLoginClicked()">LOGIN</button>
         </div>
     </div>
 </div>
