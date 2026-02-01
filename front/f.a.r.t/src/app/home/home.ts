@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { HeaderNav } from '../header-nav/header-nav';
+import { Faq } from '../faq/faq';
+import { AboutSignUp } from '../about-sign-up/about-sign-up';
+import { ScheduleBoard } from '../schedule-board/schedule-board';
 
 @Component({
   selector: 'app-home',
-  imports: [HeaderNav],
+  imports: [Faq, AboutSignUp,ScheduleBoard],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
