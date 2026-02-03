@@ -61,6 +61,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://fart-production.up.railway.app",
+]
+
 ROOT_URLCONF = 'fartBack.urls'
 
 TEMPLATES = [
