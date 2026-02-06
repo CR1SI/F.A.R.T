@@ -14,12 +14,6 @@ export class GameSign {
     {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
     {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
     {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: false, dateChosen: false, opponentsSelected: false, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: false, dateChosen: false, opponentsSelected: false, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: false, dateChosen: false, opponentsSelected: false, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: false, dateChosen: false, opponentsSelected: false, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: false, dateChosen: false, opponentsSelected: false, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: false, dateChosen: false, opponentsSelected: false, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
   ]
 
 }
