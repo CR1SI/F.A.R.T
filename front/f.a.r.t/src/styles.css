@@ -1,3 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+
+@font-face {
+    font-family: 'Fixture';
+    src: url('assets/fonts/titles/Fixture/Fixture.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IndustryBaby';
+    src: url('assets/fonts/everythingELSE/Industry Test/IndustryTest-Demi.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
