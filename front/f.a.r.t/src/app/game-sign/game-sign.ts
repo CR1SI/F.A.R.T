@@ -9,11 +9,11 @@ import { Component } from '@angular/core';
 export class GameSign {
   //will call an api that should return a list of the games
   public games: Game[] = [
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
-    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg", score: 3}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg", score: 0}, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
+    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg"}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg"},scoreTeam1: 3, scoreTeam2: 0, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
+    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg"}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg"},scoreTeam1: 3, scoreTeam2: 0, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
+    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg"}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg"},scoreTeam1: 3, scoreTeam2: 0, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
+    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg"}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg"},scoreTeam1: 3, scoreTeam2: 0, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
+    {team1: {name: "AUR", logoUrl: "assets/logos/AUR.svg"}, team2: {name: "TKY", logoUrl: "assets/logos/TKY.svg"},scoreTeam1: 3, scoreTeam2: 0, gamePlayed: true, dateChosen: true, opponentsSelected: true, vodLink: "", date: "FRI, FEB 13 - 3:00 PM"},
   ]
 
 }
@@ -21,12 +21,17 @@ export class GameSign {
 type Team = {
   name: string,
   logoUrl: string,
-  score: number,
+  players?: string[],
+  losses?: number,
+  wins?: number,
+  points?: number,
 }
 
 type Game = {
   team1: Team,
   team2: Team,
+  scoreTeam1: number,
+  scoreTeam2: number,
   gamePlayed: boolean,
   dateChosen: boolean,
   opponentsSelected: boolean,
