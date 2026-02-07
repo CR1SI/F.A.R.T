@@ -20,13 +20,15 @@ class Game(models.Model):
     score_team2 = models.PositiveIntegerField(default=0)
     game_played = models.BooleanField(default=False)
     date_chosen = models.BooleanField(default=False)
+    description = models.TextField(blank=True, null=True)
     opponents_selected = models.BooleanField(default=False)
     
     vod_link = models.URLField(blank=True, null=True)
-    date = models.DateTimeField()
+    date = models.DateTimeField(blank=True, null=True)
     
     def __str__(self):
-        return f"{self.team1} vs {self.team2} on {self.date}"
+        game_date = self.date.strftime('%Y-%m-%d') if self.date else "TBD"
+        return f"{self.team1} vs {self.team2} on ({game_date})"
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
