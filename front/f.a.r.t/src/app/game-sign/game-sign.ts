@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { GameList } from '../game-list';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-game-sign',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './game-sign.html',
   styleUrl: './game-sign.css',
 })
 export class GameSign implements OnInit{
-  games: any[] = [];
+  games$!: Observable<any[]>;
 
   constructor(private GameList: GameList) { }
 
   ngOnInit(): void {
-      this.GameList.getGames().subscribe(data => {
-        this.games = data;
-      });
+      this.games$ = this.GameList.getGames();
   }
 }

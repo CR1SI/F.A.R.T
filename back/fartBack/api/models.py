@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Team(models.Model):
     name = models.CharField(max_length=50)
@@ -62,3 +64,12 @@ class Pick(models.Model):
     
     def __str__(self) -> str:
         return f"{self.user.username} predicted {self.predicted_score_team1}-{self.predicted_score_team2} for {self.game}"
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance, display_name=instance.username)
+
+@receiver(post_save, sender=User)
+def save_profile(sender, instance, **kwargs):
+    instance.profile.save()

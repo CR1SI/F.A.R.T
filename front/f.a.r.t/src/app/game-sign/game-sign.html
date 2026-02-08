@@ -1,5 +1,5 @@
 <div class="flex gap-2 w-full h-full items-stretch">
-    @for(game of games; track game.id){
+    @for(game of (games$ | async); track game.id){
     <div class="h-full w-60 bg-white flex flex-col">
         @if (game.game_played){
         <div class="w-full justify-start pl-1 align-middle flex flex-row bg-[oklch(0.53_0.19_351.02)]">
