@@ -1,11 +1,11 @@
-<div class="w-full h-full bg-cover bg-center bg-[url(assets/art/fartBackground.jpg)]">
+<div class="flex flex-col min-h-screen bg-cover bg-center bg-[url(assets/art/fartBackground.jpg)]">
     <header class="w-full left-0 top-0 fixed z-10">
         <app-header-nav />
     </header>
-    <main class="pb-0 pt-50 scroll-auto">
+    <main class="grow flex items-center justify-center pt-50">
         <router-outlet />
     </main>
-    <footer class="bottom-0 left-0 w-full z-10">
+    <footer class="w-full">
         <app-footer />
     </footer>
 </div>

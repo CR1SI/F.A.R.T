@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import TeamViewSet, GameViewSet, ProfileViewSet, PickViewSet
+from .views import TeamViewSet, GameViewSet, ProfileViewSet, PickViewSet, RegisterView
 
 #import the view from .views
 
@@ -12,5 +12,6 @@ router.register(r'profiles', ProfileViewSet)
 router.register(r'picks', PickViewSet)
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('register/', RegisterView.as_view(), name='register'),
 ]

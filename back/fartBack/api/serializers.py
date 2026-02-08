@@ -16,13 +16,19 @@ class GameSerializer(serializers.ModelSerializer):
 
 
 class PickSerializer(serializers.ModelSerializer):
+    team_name = serializers.CharField(source='team_chosen.name', read_only=True)
+    
     class Meta:
         model = Pick
         fields = '__all__'
-        read_only_fields = ['user']
+        read_only_fields = ['user', 'created_at']
 
 class ProfileSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
+    win_percentage = serializers.ReadOnlyField()
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ['id', 'username', 'display_name', 'pfp', 
+            'pickem_wins', 'pickem_losses', 'pickem_points', 
+            'win_percentage'
+            ]
