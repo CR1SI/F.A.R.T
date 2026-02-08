@@ -7,7 +7,7 @@ import { tap, BehaviorSubject, Observable, of, switchMap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://127.0.0.1:8000/';
+  private apiUrl = 'https://fart-production.up.railway.app/';
   private isBrowser: boolean;
 
   private loggedIn: BehaviorSubject<boolean>;
