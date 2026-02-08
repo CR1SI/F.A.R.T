@@ -1,6 +1,6 @@
 <div class="flex gap-2 w-full h-full items-stretch">
     @for(game of (games$ | async); track game.id){
-    <div class="h-full w-60 bg-white flex flex-col">
+    <div class="h-full w-65 bg-white flex flex-col">
         @if (game.game_played){
         <div class="w-full justify-start pl-1 align-middle flex flex-row bg-[oklch(0.53_0.19_351.02)]">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
@@ -26,7 +26,7 @@
                 <div class="grid grid-cols-[2fr_1fr] w-full h-1/2 items-center pl-5">
                     <div class="flex items-center gap-2">
                         <img src="{{ game.team1_info.logo_url }}" class="w-7 h-7 object-contain">
-                        <span class="text-black text-xs font-[IndustryBaby] truncate">{{ game.team1_info.shortName }}</span>
+                        <span class="text-black text-[12px] font-[IndustryBaby] truncate">{{ game.team1_info.shortName }}</span>
                     </div>
                     <div class="text-end">
                         <span class="text-[oklch(0.53_0.19_351.02)] font-[IndustryBaby] font-bold">{{ game.score_team1
