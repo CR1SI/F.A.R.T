@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.parsers import MultiPartParser, FormParser
 
 # Create your views here.
 class TeamViewSet(viewsets.ModelViewSet):
@@ -20,10 +21,19 @@ class GameViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    parser_classes = (MultiPartParser, FormParser)
+    permission_classes = [IsAuthenticated]
     
-    @action(detail=False, methods=['get'])
+    @action(detail=False, methods=['get', 'patch'])
     def me(self, request):
         profile = Profile.objects.get(user=request.user)
+        if(request.method == 'PATCH'):
+            serializer = self.get_serializer(profile, data = request.data, partial = True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
         serializer = self.get_serializer(profile)
         return Response(serializer.data)
 

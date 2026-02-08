@@ -71,4 +71,21 @@ export class AuthService {
       this.currentUser.next(null);
     }
   }
+
+  updateProfile(profileData: {display_name?: string; pfp?: File}) {
+    const formData = new FormData();
+
+    if(profileData.display_name){
+      formData.append('display_name', profileData.display_name);
+    }
+    if(profileData.pfp){
+      formData.append('pfp', profileData.pfp);
+    }
+
+    return this.http.patch(`${this.apiUrl}api/profiles/me/`, formData).pipe(
+      tap((updatedProfile) => {
+        this.currentUser.next(updatedProfile);
+      })
+    );
+  }
 }

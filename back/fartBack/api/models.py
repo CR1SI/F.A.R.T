@@ -37,6 +37,7 @@ class Profile(models.Model):
     pfp = models.ImageField(upload_to='pfps/', default='default_pfp.jpg')
     pickem_wins = models.PositiveIntegerField(default=0)
     pickem_losses = models.PositiveIntegerField(default=0)
+    pickem_points = models.PositiveIntegerField(default=0)
     display_name = models.CharField(max_length=50, blank=True)
     
     def __str__(self):

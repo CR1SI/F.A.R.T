@@ -28,4 +28,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     win_percentage = serializers.ReadOnlyField()
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ['id', 'username', 'display_name', 'pfp', 
+            'pickem_wins', 'pickem_losses', 'pickem_points', 
+            'win_percentage'
+            ]
