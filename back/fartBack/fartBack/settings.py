@@ -66,6 +66,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
+    "https://f-a-r-t.netlify.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
