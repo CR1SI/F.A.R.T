@@ -20,7 +20,7 @@
                                 <span class="font-[IndustryBaby] text-[oklch(0.27_0.02_267.98)] hidden lg:block uppercase tracking-tight">
                                     {{ (authService.user$ | async)?.display_name || 'USER' }}
                                 </span>
-                                <div class="w-10 h-10 scale- rounded-full overflow-hidden border-2 border-[oklch(0.53_0.19_351.02)] shadow-sm bg-white">
+                                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-[oklch(0.53_0.19_351.02)] shadow-sm bg-white">
                                     <img [src]="(authService.user$ | async)?.pfp || 'assets/art/DEFAULT_PFP.svg'"
                                         class="w-full h-full object-cover">
                                 </div>

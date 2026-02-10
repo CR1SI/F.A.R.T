@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Game, Team, Pick, Profile
+from .models import Game, Team, Pick, Profile, ChatMessage
 
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,3 +32,8 @@ class ProfileSerializer(serializers.ModelSerializer):
             'pickem_wins', 'pickem_losses', 'pickem_points', 
             'win_percentage'
             ]
+
+class ChatMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChatMessage
+        fields = '__all__'

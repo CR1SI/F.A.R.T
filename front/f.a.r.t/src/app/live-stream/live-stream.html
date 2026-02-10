@@ -1,6 +1,6 @@
 <section class="w-full flex h-fit justify-center">
-    <div class="flex flex-row w-full center backdrop-blur-sm p-5 gap-4">
-        <div class="flex w-[80%] h-full">
+    <div class="flex flex-row w-full center backdrop-blur-sm p-5 gap-3">
+        <div class="flex w-[80%] h-full justify-center">
             <iframe
             [src]="streamUrl | safe"
             frameborder="0"
@@ -9,8 +9,8 @@
             class="w-310 h-145">
             </iframe>
         </div>
-        <div class="flex w-[20%] h-145 bg-[oklch(0.27_0.02_267.98)]/90 border-2 border-[oklch(0.53_0.19_351.02)]">
-            <div class="flex flex-col w-full h-full">
+        <div class="flex w-[30%] h-145 bg-[oklch(0.27_0.02_267.98)]/90 border-2 border-[oklch(0.53_0.19_351.02)] overflow-hidden">
+            <div class="flex flex-col w-full h-full min-w-0">
 
                 <div class="z-10 absolute right-2 top-2">
                      <button class="font-[Fixture] h-10 w-10 rounded-full bg-[oklch(0.53_0.19_351.02)] italic shadow-xl text-xl text-[oklch(0.27_0.02_267.98)] transition-all ease-in-out hover:text-[oklch(0.53_0.19_351.02)] hover:bg-[oklch(0.27_0.02_267.98)] hover:cursor-pointer hover:shadow-2xl">
@@ -18,11 +18,33 @@
                     </button>
                 </div>
 
-                <div class="flex-1 overflow-y-auto p-4 space-y-4 scroll-smooth">
-                    <div class="text-white/50 text-sm italic">
-                        <p>Latest message (Bottom)</p>
-                        <p>Older message</p>
-                        <p>Oldest message (Top)</p>
+                <div #scrollContainer class="flex-1 overflow-y-auto overflow-x-hidden p-4">
+                    <div class="text-white/80 text-sm italic flex flex-col gap-3">
+                        @for (msg of messages; track msg.timestamp) {
+                        <div class="grid grid-cols-[45px_1fr] w-full max-w-full h-fit items-start break-all">
+                        
+                            <div
+                                class="flex w-10 h-10 rounded-full overflow-hidden border-2 border-[oklch(0.53_0.19_351.02)] shadow-sm bg-white shrink-0">
+                                <img [src]="msg.pfp" class="w-full h-full object-cover">
+                            </div>
+                        
+                            <div class="min-w-0 pl-2">
+                                <div class="block leading-none mb-1">
+                                    <span class="tracking-wide text-[10px] opacity-50">{{ msg.timestamp | date:'h:mm:ss' }}</span>
+                                </div>
+                        
+                                <div class="leading-tight">
+                                    <strong class="text-md font-[IndustryBaby] tracking-wide italic mr-1">
+                                        {{ msg.profile || msg.username }} :
+                                    </strong>
+                                    <span class="text-white/90 whitespace-normal">
+                                        {{ msg.message }}
+                                    </span>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        }
                     </div>
                 </div>
                 
@@ -33,8 +55,8 @@
                         rows="1"
                         placeholder="Type a message..."
                         (keydown)="handleKeyInput($event)"
+                        (input)="adjustHeight($event)"
                         class="w-full p-3 rounded align-middle font-[IndustryBaby] text-lg bg-white/10 text-[oklch(0.27_0.02_267.98)] resize-none focus:outline-none min-h-10"
-                        oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
                     ></textarea>
                 </div>
             </div>

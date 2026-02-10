@@ -74,3 +74,11 @@ def create_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+class ChatMessage(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='messages')
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['timestamp']
