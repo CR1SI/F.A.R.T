@@ -1,6 +1,6 @@
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
-from .models import Team, Game, Profile, Pick
+from .models import Team, Game, Profile, Pick, ChatMessage
 from .serializers import TeamSerializer, GameSerializer, ProfileSerializer, PickSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
+from pusher import Pusher
+from django.utils import timezone
 
 # Create your views here.
 class TeamViewSet(viewsets.ModelViewSet):
@@ -64,3 +66,47 @@ class RegisterView(APIView):
         token, created = Token.objects.get_or_create(user=user)
         
         return Response({'token': token.key}, status=status.HTTP_201_CREATED)
+
+
+pusher_client = Pusher(
+    app_id = '2113006',
+    key = 'c2603b982d0221f74186',
+    secret = '25f2cb2a6c87d170f1ad',
+    cluster = 'us2',
+    ssl=True,
+)
+class send_message(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        profile = request.user.profile
+        content = request.data.get('content')
+        
+        if not content:
+            return Response({'error': 'Content is required'}, status=400)
+        
+        msg = ChatMessage.objects.create(profile=profile, content=content)
+        
+        pusher_client.trigger('fart-chat', 'chat-event', {
+            'profile': profile.display_name,
+            'pfp': request.build_absolute_uri(profile.pfp.url),
+            'message': content,
+            'timestamp': msg.timestamp.isoformat()
+        })
+        
+        return Response({'status': 'sent'})
+
+class ChatHistory(APIView):
+    permission_classes = [AllowAny]
+    
+    def get(self, request):
+        messages = ChatMessage.objects.all().order_by('-timestamp')[:50]
+        data = []
+        for msg in messages:
+            data.append({
+                'username': msg.profile.display_name,
+                'pfp': request.build_absolute_uri(msg.profile.pfp.url),
+                'message': msg.content,
+                'timestamp': msg.timestamp
+            })
+        return Response(data[::-1])
