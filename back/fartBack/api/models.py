@@ -15,15 +15,22 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
+class Season(models.Model):
+    name = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
+
 class Game(models.Model):
+    season = models.ForeignKey(Season, on_delete=models.CASCADE, null=True, blank=True, related_name="games")
     team1 = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="games_as_team1")
     team2 = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="games_as_team2")
     score_team1 = models.PositiveIntegerField(default=0)
     score_team2 = models.PositiveIntegerField(default=0)
     game_played = models.BooleanField(default=False)
     date_chosen = models.BooleanField(default=False)
-    description = models.TextField(blank=True, null=True)
     opponents_selected = models.BooleanField(default=False)
+    description = models.TextField(blank=True, null=True)
     
     vod_link = models.URLField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
