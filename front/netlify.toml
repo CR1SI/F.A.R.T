@@ -1,0 +1,9 @@
+[build]
+  base = "front/f.a.r.t"
+  publish = "dist/f.a.r.t/browser"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
