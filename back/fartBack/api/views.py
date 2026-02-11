@@ -9,7 +9,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 from pusher import Pusher
-from django.utils import timezone
+from django.views.decorators.cache import never_cache
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 class TeamViewSet(viewsets.ModelViewSet):
@@ -96,6 +97,7 @@ class send_message(APIView):
         
         return Response({'status': 'sent'})
 
+@method_decorator(never_cache, name='dispatch')
 class ChatHistory(APIView):
     permission_classes = [AllowAny]
     
