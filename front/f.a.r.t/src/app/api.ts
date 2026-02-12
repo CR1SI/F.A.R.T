@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,7 +15,8 @@ export class Api {
   }
 
   getChatHistory():Observable<any> {
-    return this.http.get<any[]>(`${this.apiUrl}chat_history/`)
+    const params = new HttpParams().set('t', new Date().getTime().toString());
+    return this.http.get<any[]>(`${this.apiUrl}chat_history/`, { params });
   }
 
   sendMessage(content: string): Observable<any> {

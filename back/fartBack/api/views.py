@@ -11,6 +11,10 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from pusher import Pusher
 from django.views.decorators.cache import never_cache
 from django.utils.decorators import method_decorator
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Create your views here.
 class TeamViewSet(viewsets.ModelViewSet):
@@ -71,8 +75,8 @@ class RegisterView(APIView):
 
 pusher_client = Pusher(
     app_id = '2113006',
-    key = 'c2603b982d0221f74186',
-    secret = '25f2cb2a6c87d170f1ad',
+    key = os.environ["key"],
+    secret = os.environ["secret"],
     cluster = 'us2',
     ssl=True,
 )
