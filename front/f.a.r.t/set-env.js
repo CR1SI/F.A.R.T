@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const envConfigFile = `export const environment = {
   production: true,
-  pusherKey: '${process.env.PUSHER_KEY}',
+  pusherKey: '${process.env.pusherKey}',
 };
 `;
 
