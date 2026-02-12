@@ -1,19 +1,19 @@
-<section class="w-full flex h-fit justify-center">
-    <div class="flex flex-row w-full center backdrop-blur-sm p-5 gap-3">
-        <div class="flex w-[80%] h-full justify-center">
+<section class="w-full flex h-fit justify-center overflow-x-hidden">
+    <div class="flex flex-col md:flex-row w-full center backdrop-blur-sm p-5 gap-3 max-w-7xl">
+        <div class="flex w-full md:w-[80%] md:h-full justify-center">
             <iframe
             [src]="streamUrl | safe"
             frameborder="0"
             allow="autoplay; encrypted-media; picture-in-picture"
             allowfullscreen
-            class="w-310 h-145">
+            class="w-full md:w-310 h-fit md:h-145 max-w-full aspect-video">
             </iframe>
         </div>
-        <div class="flex w-[30%] h-145 bg-[oklch(0.27_0.02_267.98)]/90 border-2 border-[oklch(0.53_0.19_351.02)] overflow-hidden">
+        <div class="flex w-full md:w-[30%] h-65 md:h-145 bg-[oklch(0.27_0.02_267.98)]/90 border-2 border-[oklch(0.53_0.19_351.02)] overflow-hidden max-w-full">
             <div class="flex flex-col w-full h-full min-w-0">
 
                 <div class="z-10 absolute right-2 top-2">
-                     <button class="font-[Fixture] h-10 w-10 rounded-full bg-[oklch(0.53_0.19_351.02)] italic shadow-xl text-xl text-[oklch(0.27_0.02_267.98)] transition-all ease-in-out hover:text-[oklch(0.53_0.19_351.02)] hover:bg-[oklch(0.27_0.02_267.98)] hover:cursor-pointer hover:shadow-2xl">
+                     <button class="hidden md:block font-[Fixture] h-10 w-10 rounded-full bg-[oklch(0.53_0.19_351.02)] italic shadow-xl text-xl text-[oklch(0.27_0.02_267.98)] transition-all ease-in-out hover:text-[oklch(0.53_0.19_351.02)] hover:bg-[oklch(0.27_0.02_267.98)] hover:cursor-pointer hover:shadow-2xl">
                             P
                     </button>
                 </div>
@@ -37,8 +37,8 @@
                                     <strong class="text-md font-[IndustryBaby] tracking-wide italic mr-1">
                                         {{ msg.profile || msg.username }} :
                                     </strong>
-                                    <span class="text-white/90 whitespace-normal">
-                                        {{ msg.message }}
+                                    <span class="text-white/90 whitespace-normal" [innerHTML]="msg.message | highlight">
+                                        
                                     </span>
                                 </div>
                             </div>

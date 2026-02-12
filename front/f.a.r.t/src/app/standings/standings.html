@@ -1,36 +1,38 @@
-<section class="w-full flex h-fit justify-center align-middle py-5">
-    <div class="flex flex-col h-auto backdrop-blur-sm">
-        <div class="w-full h-full grid grid-cols-[150px_450px_150px_150px] gap-5 font-[Fixture] text-2xl p-3 text-[oklch(0.27_0.02_267.98)]">
-            <div class="flex justify-center items-center">
+<section class="w-full flex h-fit justify-center align-middle py-5 px-4">
+    <div class="flex flex-col h-auto backdrop-blur-sm w-full max-w-6xl">
+        <!-- Header Row -->
+        <div class="w-full h-full grid grid-cols-4 sm:grid-cols-[80px_1fr_100px_100px] md:grid-cols-[150px_1fr_150px_150px] gap-2 md:gap-5 font-[Fixture] text-sm md:text-2xl p-2 md:p-3 text-[oklch(0.27_0.02_267.98)]">
+            <div class="flex justify-center items-center truncate md:truncate">
                 <h1>RANK</h1>
             </div>
-            <div class="flex justify-start items-center italic">
+            <div class="flex justify-start items-center italic truncate md:truncate">
                 <h1>TEAMS</h1>
             </div>
-            <div class="flex justify-center items-center italic">
+            <div class="flex justify-center items-center italic truncate md:truncate">
                 <h1>RECORD</h1>
             </div>
-            <div class="flex justify-center items-center italic">
+            <div class="flex justify-center items-center italic truncate md:truncate">
                 <h1>POINTS</h1>
             </div>
         </div>
         <hr class="w-[95%] self-center">
+        <!-- Team Rows -->
         @for(team of (teams$ | async); track team.shortName; let i = $index){
-            <div class="w-full h-full grid grid-cols-[150px_450px_150px_150px] gap-5 font-[IndustryBaby] text-4xl p-3">
-                <div class="flex justify-center text-3xl items-center text-[oklch(0.27_0.02_267.98)]">
+            <div class="w-full h-full grid grid-cols-4 sm:grid-cols-[80px_1fr_100px_100px] md:grid-cols-[150px_1fr_150px_150px] gap-2 md:gap-5 font-[IndustryBaby] text-sm md:text-4xl p-2 md:p-3">
+                <div class="flex justify-center text-xs md:text-3xl items-center text-[oklch(0.27_0.02_267.98)] truncate">
                     {{ i + 1 }}.
                 </div>
-                <div class="flex flex-row justify-start items-center gap-5 italic text-[oklch(0.27_0.02_267.98)]">
-                    <img class="max-w-13 max-h-13 min-w-13 min-h-13" src="{{team.logo_url}}">
-                    <div class="flex flex-col">
-                        <h1>{{ team.name }}</h1>
-                        <p class="text-sm text-[oklch(0.53_0.19_351.02)]">{{ team.players[0] }} \ {{ team.players[1] }}</p>
+                <div class="flex flex-row justify-start items-center gap-2 md:gap-5 italic text-[oklch(0.27_0.02_267.98)] min-w-0">
+                    <img class="max-w-8 md:max-w-13 max-h-8 md:max-h-13 min-w-8 md:min-w-13 min-h-8 md:min-h-13 shrink-0" src="{{team.logo_url}}">
+                    <div class="flex flex-col min-w-0">
+                        <h1 class="truncate text-xs md:text-base">{{ team.name }}</h1>
+                        <p class="text-xs md:text-sm text-[oklch(0.53_0.19_351.02)] truncate">{{ team.players[0] }} \ {{ team.players[1] }}</p>
                     </div>
                 </div>
-                <div class="flex justify-center items-center italic text-[oklch(0.27_0.02_267.98)]">
+                <div class="flex justify-center items-center italic text-[oklch(0.27_0.02_267.98)] truncate text-xs md:text-base">
                     <h1>{{ team.wins }}-{{ team.losses }}</h1>
                 </div>
-                <div class="flex justify-center items-center italic text-[oklch(0.27_0.02_267.98)]">
+                <div class="flex justify-center items-center italic text-[oklch(0.27_0.02_267.98)] truncate text-xs md:text-base">
                     <h1>{{ team.points }}</h1>
                 </div>
             </div>
