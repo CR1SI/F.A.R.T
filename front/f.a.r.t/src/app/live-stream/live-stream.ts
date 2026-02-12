@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Api } from '../api';
 import Pusher from 'pusher-js';
 import { CommonModule } from '@angular/common';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-live-stream',
@@ -63,7 +64,7 @@ export class LiveStream implements OnInit{
   }
 
   pusherInit(){
-    var pusher = new Pusher('c2603b982d0221f74186', {
+    var pusher = new Pusher(environment.pusherKey, {
       cluster: 'us2'
     });
 
