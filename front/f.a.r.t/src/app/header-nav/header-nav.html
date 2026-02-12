@@ -1,52 +1,131 @@
 <app-schedule-board />
-<div class="shadow-xl backdrop-blur-xs h-20 flex justify-center align-middle">
-    <div class="flex">
+<div class="shadow-xl bg-white h-20 flex align-middle">
+    <div class="flex w-full">
         <div class="my-2 w-full flex justify-between items-center px-4">
-            <div class="w-55 shrink-0">
-                <img src="assets/art/FART_WORDMARK.svg" routerLink="/home" alt="F.A.R.T LOGO" class="w-full h-full object-contain hover:scale-[105%] transition-all ease-in-out duration-75 cursor-pointer active:scale-100">
+            <div class="flex md:pl-15 items-center grow gap-15">
+                <div class="w-40 sm:w-40 md:w-48 lg:w-56 shrink-0 md:my-5">
+                    <img src="assets/art/FART_WORDMARK.svg" routerLink="/home" alt="F.A.R.T LOGO" class="w-full h-full object-contain hover:scale-[105%] transition-all ease-in-out duration-75 cursor-pointer active:scale-100">
+                </div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block w-[75%] shrink-0">
+                    <ul class="flex flex-row gap-4 md:gap-6 lg:gap-10 justify-start items-center w-full">
+                        <div class="flex gap-4 md:gap-6 lg:gap-10">
+                            <button routerLink="/standings"
+                                class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100"
+                                type="button">STANDINGS</button>
+                            <button routerLink="/news"
+                                class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100"
+                                type="button">NEWS</button>
+                            <button routerLink="/teams"
+                                class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100"
+                                type="button">TEAMS</button>
+                            <button routerLink="/schedule"
+                                class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100"
+                                type="button">SCHEDULE</button>
+                            <button routerLink="/pick-ems"
+                                class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100"
+                                type="button">PICK'EMs</button>
+                        </div>
+                    </ul>
+                </div>
+                <!-- Mobile Controls (Hamburger + Auth) -->
+                <div class="flex md:hidden items-center gap-2 ml-auto">
+                    <!-- Mobile Auth -->
+                    @if (authService.isLoggedIn$ | async) {
+                        <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-[oklch(0.53_0.19_351.02)] shadow-sm bg-white cursor-pointer" (click)="toggleMobileMenu()">
+                            <img [src]="(authService.user$ | async)?.pfp || 'assets/art/DEFAULT_PFP.svg'"
+                                class="w-full h-full object-cover">
+                        </div>
+                    }
+                    @else {
+                        <button routerLink="/login" class="font-[IndustryBaby] text-xs px-2 py-1 text-[oklch(0.27_0.02_267.98)]" type="button">LOGIN</button>
+                    }
+                    <!-- Hamburger Menu Button -->
+                    <button (click)="toggleMobileMenu()" class="flex items-center justify-center w-10 h-10 rounded hover:bg-gray-100 transition-colors" type="button" aria-label="Toggle menu">
+                        <svg class="w-6 h-6 text-[oklch(0.27_0.02_267.98)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div class="flex items-center h-15 grow mx-4 px-6">
-                <ul class="flex flex-row gap-4 md:gap-6 lg:gap-10 justify-start items-center w-full">
-                    <div class="flex gap-4 md:gap-6 lg:gap-10">
-                        <button routerLink="/standings" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100" type="button">STANDINGS</button>
-                        <button routerLink="/news" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100" type="button">NEWS</button>
-                        <button routerLink="/teams" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100" type="button">TEAMS</button>
-                        <button routerLink="/schedule" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100" type="button">SCHEDULE</button>
-                        <button routerLink="/pick-ems" class="h-[50%] self-center font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100" type="button">PICK'EMs</button>
-                    </div>
-                    <div class="ml-20 relative group">
-                        @if (authService.isLoggedIn$ | async) {
-                            <div class="flex items-center gap-3 cursor-pointer p-1">
-                                <span class="font-[IndustryBaby] text-[oklch(0.27_0.02_267.98)] hidden lg:block uppercase tracking-tight">
-                                    {{ (authService.user$ | async)?.display_name || 'USER' }}
-                                </span>
-                                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-[oklch(0.53_0.19_351.02)] shadow-sm bg-white">
-                                    <img [src]="(authService.user$ | async)?.pfp || 'assets/art/DEFAULT_PFP.svg'"
-                                        class="w-full h-full object-cover">
-                                </div>
+            <div class="hidden md:flex justify-start md:justify-end items-center h-15 grow mx-4 pr-15">
+                <div class="ml-20 relative group">
+                    @if (authService.isLoggedIn$ | async) {
+                        <div class="flex items-center gap-3 cursor-pointer p-1">
+                            <span class="font-[IndustryBaby] text-[oklch(0.27_0.02_267.98)] hidden lg:block uppercase tracking-tight">
+                                {{ (authService.user$ | async)?.display_name || 'USER' }}
+                            </span>
+                            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-[oklch(0.53_0.19_351.02)] shadow-sm bg-white">
+                                <img [src]="(authService.user$ | async)?.pfp || 'assets/art/DEFAULT_PFP.svg'"
+                                    class="w-full h-full object-cover">
                             </div>
-                            
-                            <div
-                                class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute right-0 top-full pt-2 transition-all duration-150 ease-in-out z-50">
-                                <div class="bg-white shadow-2xl rounded-sm border-t-4 border-[oklch(0.53_0.19_351.02)] w-48 overflow-hidden">
-                                    <button routerLink="/profile"
-                                        class="w-full text-left px-4 py-3 font-[IndustryBaby] text-sm hover:bg-gray-100 text-[oklch(0.27_0.02_267.98)] transition-colors active:cursor-grab hover:cursor-pointer">
-                                        MY PROFILE
-                                    </button>
-                                    <div class="h-1px bg-gray-100 w-full"></div>
-                                    <button (click)="onLogout()"
-                                        class="w-full text-left px-4 py-3 font-[IndustryBaby] text-sm hover:bg-red-50 text-red-600 transition-colors active:cursor-grab hover:cursor-pointer">
-                                        LOGOUT
-                                    </button>
-                                </div>
+                        </div>
+                        
+                        <div
+                            class="invisible group-hover:visible opacity-0 group-hover:opacity-100 absolute right-0 top-full pt-2 transition-all duration-150 ease-in-out z-50">
+                            <div class="bg-white shadow-2xl rounded-sm border-t-4 border-[oklch(0.53_0.19_351.02)] w-48 overflow-hidden">
+                                <button routerLink="/profile"
+                                    class="w-full text-left px-4 py-3 font-[IndustryBaby] text-sm hover:bg-gray-100 text-[oklch(0.27_0.02_267.98)] transition-colors active:cursor-grab hover:cursor-pointer">
+                                    MY PROFILE
+                                </button>
+                                <div class="h-1px bg-gray-100 w-full"></div>
+                                <button (click)="onLogout()"
+                                    class="w-full text-left px-4 py-3 font-[IndustryBaby] text-sm hover:bg-red-50 text-red-600 transition-colors active:cursor-grab hover:cursor-pointer">
+                                    LOGOUT
+                                </button>
                             </div>
-                        }
-                        @else {
-                            <button routerLink="/login" class="font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100" type="button" >LOGIN/REGISTER</button>
-                        }
-                    </div>
-                </ul>
+                        </div>
+                    }
+                    @else {
+                        <button routerLink="/login" class="font-[IndustryBaby] text-sm md:text-base whitespace-nowrap hover:scale-[120%] transition-all ease-in-out duration-75 text-[oklch(0.27_0.02_267.98)] hover:text-[oklch(0.53_0.19_351.02)] hover:cursor-pointer active:scale-100" type="button" >LOGIN/REGISTER</button>
+                    }
+                </div>
             </div>
+
         </div>
     </div>
 </div>
+<!-- Mobile Menu -->
+@if (mobileMenuOpen) {
+    <div class="fixed inset-0 z-40 bg-black/50" (click)="closeMobileMenu()"></div>
+    <div class="md:hidden fixed left-0 top-20 w-full bg-white shadow-lg z-50 animate-in slide-in-from-top duration-200 max-h-[calc(100vh-80px)] overflow-y-auto">
+        <div class="flex flex-col p-4 gap-2">
+            <button routerLink="/standings" (click)="closeMobileMenu()"
+                class="text-left px-4 py-3 font-[IndustryBaby] text-base text-[oklch(0.27_0.02_267.98)] hover:bg-gray-100 transition-colors rounded">
+                STANDINGS
+            </button>
+            <button routerLink="/news" (click)="closeMobileMenu()"
+                class="text-left px-4 py-3 font-[IndustryBaby] text-base text-[oklch(0.27_0.02_267.98)] hover:bg-gray-100 transition-colors rounded">
+                NEWS
+            </button>
+            <button routerLink="/teams" (click)="closeMobileMenu()"
+                class="text-left px-4 py-3 font-[IndustryBaby] text-base text-[oklch(0.27_0.02_267.98)] hover:bg-gray-100 transition-colors rounded">
+                TEAMS
+            </button>
+            <button routerLink="/schedule" (click)="closeMobileMenu()"
+                class="text-left px-4 py-3 font-[IndustryBaby] text-base text-[oklch(0.27_0.02_267.98)] hover:bg-gray-100 transition-colors rounded">
+                SCHEDULE
+            </button>
+            <button routerLink="/pick-ems" (click)="closeMobileMenu()"
+                class="text-left px-4 py-3 font-[IndustryBaby] text-base text-[oklch(0.27_0.02_267.98)] hover:bg-gray-100 transition-colors rounded">
+                PICK'EMs
+            </button>
+            <div class="h-px bg-gray-100 my-2"></div>
+            @if (authService.isLoggedIn$ | async) {
+                <div class="px-4 py-3">
+                    <span class="font-[IndustryBaby] text-[oklch(0.27_0.02_267.98)] uppercase tracking-tight">
+                        Hey, {{ (authService.user$ | async)?.display_name || 'USER' }}
+                    </span>
+                </div>
+                <button routerLink="/profile" (click)="closeMobileMenu()"
+                    class="text-left px-4 py-3 font-[IndustryBaby] text-base text-[oklch(0.27_0.02_267.98)] hover:bg-gray-100 transition-colors rounded">
+                    MY PROFILE
+                </button>
+                <button (click)="onLogout(); closeMobileMenu()"
+                    class="text-left px-4 py-3 font-[IndustryBaby] text-base text-red-600 hover:bg-red-50 transition-colors rounded">
+                    LOGOUT
+                </button>
+            }
+        </div>
+    </div>
+}

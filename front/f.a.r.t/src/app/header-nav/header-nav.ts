@@ -12,7 +12,17 @@ import { Router } from '@angular/router';
   styleUrl: './header-nav.css',
 })
 export class HeaderNav {
+  mobileMenuOpen = false;
+
   constructor(public authService: AuthService, private router: Router) {}
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.mobileMenuOpen = false;
+  }
 
   onLogout() {
     this.authService.logout();
