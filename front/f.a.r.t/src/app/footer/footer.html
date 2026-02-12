@@ -3,11 +3,13 @@
         <div class="w-full h-fit">
             <h1 class="font-[Fixture] text-white tracking-wider text-center italic text-2xl md:text-4xl">THE TEAMS</h1>
         </div>
-        <div class="w-full h-fit flex flex-col md:flex-row gap-5">
+        <div class="w-full h-fit flex flex-col md:flex-row justify-center md:gap-13">
             @for(team of (teams$ | async); track team.shortName; let i = $index){
-                <div class="flex flex-row md:flex-col gap-2 items-center">
-                    <img class="w-12 h-14" src="{{team.logo_url}}">
-                    <span class="font-[IndustryBaby] text-center text-white text-lg md:text-lg">
+                <div class="flex flex-row md:flex-col gap-3 md:gap-1 items-center ">
+                    <a routerLink="/teams">
+                        <img class="w-13 h-13 md:w-16 md:h-16 hover:scale-110 transition-all ease-in-out duration-75 hover:cursor-pointer" src="{{team.logo_url}}">
+                    </a>
+                    <span class="font-[IndustryBaby] text-center text-white lg:text-md text-md">
                         {{ team.city }}
                     </span>
                 </div>
@@ -16,20 +18,43 @@
     </div>
 
     <br>
+    <br>
     
-    <div class="w-[60%] self-center">
-
+    <div class="w-[60%] self-center flex flex-col gap-5">
+        <div class="w-full h-fit">
+            <h1 class="font-[Fixture] text-white tracking-wider text-center italic text-2xl md:text-4xl">FOLLOW US</h1>
+        </div>
+        <div class="flex flex-row gap-5 justify-center">
+            <a href="https://www.youtube.com/waff1er" target="_blank" class="bg-[oklch(0.53_0.19_351.02)] p-1.5 rounded-full object-contain hover:scale-110 transition-all ease-in-out duration-75">
+                <svg width="32px" height="32px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;}</style></defs><title>logo--youtube</title><path d="M29.41,9.26a3.5,3.5,0,0,0-2.47-2.47C24.76,6.2,16,6.2,16,6.2s-8.76,0-10.94.59A3.5,3.5,0,0,0,2.59,9.26,36.13,36.13,0,0,0,2,16a36.13,36.13,0,0,0,.59,6.74,3.5,3.5,0,0,0,2.47,2.47C7.24,25.8,16,25.8,16,25.8s8.76,0,10.94-.59a3.5,3.5,0,0,0,2.47-2.47A36.13,36.13,0,0,0,30,16,36.13,36.13,0,0,0,29.41,9.26ZM13.2,20.2V11.8L20.47,16Z" fill="white"/><rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/></svg>
+            </a>
+            <a href="https://x.com/FARTTheLeague" target="_blank" class="bg-[oklch(0.53_0.19_351.02)] p-1.5 rounded-full object-contain hover:scale-110 transition-all ease-in-out duration-75">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-twitter-x"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" fill="white"/>
+                </svg>
+            </a>
+        </div>
     </div>
 
     <br>
 
     <div class="w-[60%] self-center">
-        <hr class="text-white">
+        <hr class="text-white/50 border">
     </div>
 
-    <br>
-
-    <div class="w-[60%] self-center">
-
+    <div class="w-[60%] self-center pb-3 justify-center items-center">
+        <div class="flex flex-col md:flex-row items-center gap-0 md:gap-3">
+            <img src="/assets/art/FART.svg" class="w-24 h-24 object-contain">
+            <div class="flex-1 w-full text-center md:text-start">
+                <p class="text-white text-xs font-[IndustryBaby] tracking-wider">
+                    © 2026 THE FAIR ALPHA RIVALRY TRIALS LEAGUE
+                </p>
+                <p class="text-gray-400 text-[10px] font-[IndustryBaby] tracking-wider mt-0.5">
+                    ALL RIGHTS RESERVED.
+                </p>
+            </div>
+        </div>
     </div>
 </div>
