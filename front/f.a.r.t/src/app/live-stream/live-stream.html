@@ -37,8 +37,8 @@
                                     <strong class="text-md font-[IndustryBaby] tracking-wide italic mr-1">
                                         {{ msg.profile || msg.username }} :
                                     </strong>
-                                    <span class="text-white/90 whitespace-normal">
-                                        {{ msg.message }}
+                                    <span class="text-white/90 whitespace-normal" [innerHTML]="msg.message | highlight">
+                                        
                                     </span>
                                 </div>
                             </div>

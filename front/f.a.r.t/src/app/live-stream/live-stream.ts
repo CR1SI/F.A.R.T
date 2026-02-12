@@ -1,15 +1,16 @@
-import { Component, ElementRef, OnInit, ViewChild, NgZone, ChangeDetectorRef} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, NgZone, ChangeDetectorRef, Inject, PLATFORM_ID} from '@angular/core';
 import { SafePipe } from '../safe-pipe';
 import { FormsModule } from '@angular/forms';
 import { Api } from '../api';
 import Pusher from 'pusher-js';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { environment } from '../environments/environment';
+import { HighlightPipe } from '../highlight-pipe';
 
 @Component({
   selector: 'app-live-stream',
   standalone: true,
-  imports: [SafePipe, FormsModule, CommonModule],
+  imports: [SafePipe, FormsModule, CommonModule, HighlightPipe],
   templateUrl: './live-stream.html',
   styleUrl: './live-stream.css',
 })
@@ -22,12 +23,17 @@ export class LiveStream implements OnInit{
 
   messageValue: string = '';
   messages: any[] = [];
+  private isBrowser: boolean;
 
-  constructor(private api: Api, private ngZone: NgZone, private cdr: ChangeDetectorRef){}
+  constructor(private api: Api, private ngZone: NgZone, private cdr: ChangeDetectorRef, @Inject(PLATFORM_ID) platformId: Object){
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(){
     this.loadHistory();
-    this.pusherInit();
+    if (this.isBrowser) {
+      this.pusherInit();
+    }
   }
 
   handleKeyInput(event: KeyboardEvent){
@@ -40,6 +46,7 @@ export class LiveStream implements OnInit{
   sendMessage(){
     if (!this.messageValue.trim()) return;
     const msg = this.messageValue;
+
     this.messageValue = '';
 
     this.api.sendMessage(msg).subscribe({
@@ -56,8 +63,11 @@ export class LiveStream implements OnInit{
   loadHistory(){
     this.api.getChatHistory().subscribe({
       next: (history) => {
-        this.messages = history;
-        console.log(this.messages);
+        this.ngZone.run(() => {
+          this.messages = history;
+          this.cdr.detectChanges();
+          this.scrollToBottom();
+        });
       },
       error: (err) => console.error('Could not load history', err)
     });
@@ -81,13 +91,13 @@ export class LiveStream implements OnInit{
   }
 
   resetInputHeight(){
-    if (this.chatInput) {
+    if (this.isBrowser && this.chatInput) {
       this.chatInput.nativeElement.style.height = '52px';
     }
   }
 
   scrollToBottom(): void {
-    if (!this.scrollContainer) return;
+    if (!this.isBrowser || !this.scrollContainer) return;
     window.requestAnimationFrame(() => {
       const el = this.scrollContainer.nativeElement;
       el.scrollTop = el.scrollHeight;
@@ -95,6 +105,7 @@ export class LiveStream implements OnInit{
   }
 
   adjustHeight(event: any) {
+    if (!this.isBrowser) return;
     const textarea = event.target;
     textarea.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
