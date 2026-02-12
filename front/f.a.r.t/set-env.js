@@ -1,5 +1,5 @@
 const fs = require('fs');
-const targetPath = './src/app/environments/environment.prod.ts';
+const targetPath = '/src/app/environments/environment.prod.ts';
 const colors = require('colors');
 require('dotenv').config();
 
