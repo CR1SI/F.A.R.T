@@ -1,21 +1,35 @@
-<div class="h-30 backdrop-blur-xs shadow-xl flex">
-    <div class="flex w-full h-full justify-center align-middle py-4">
-        <div class="flex w-[20%] justify-end">
-            <img src="assets/art/FART.svg">
+<div class="w-full h-fit bg-[oklch(0.27_0.02_267.98)] shadow-xl flex flex-col pt-2">
+    <div class="w-[60%] self-center flex flex-col gap-5">
+        <div class="w-full h-fit">
+            <h1 class="font-[Fixture] text-white tracking-wider text-center italic text-2xl md:text-4xl">THE TEAMS</h1>
         </div>
-        <div class="flex flex-col w-[20%] justify-center items-center align-middle">
-            <div class="flex h-[50%] align-middle justify-center">
-                <p class="self-center">© 2026 <b>F.A.R.T.</b> All rights reserved.</p>
-            </div>
-            <div class="self-center flex gap-5 h-[50%] align-middle justify-center">
-                <a href="https://x.com/FARTTheLeague" target="_blank">
-                    <img src="assets/art/xLOGO.png" class="h-8 hover:scale-[105%] transition-all ease-in-out duration-75 cursor-pointer active:scale-100 grayscale hover:grayscale-0">
-                </a>
-                <a href="https://www.youtube.com/waff1er" target="_blank">
-                    <img src="assets/art/ytLOGO.png"  class="h-8 hover:scale-[105%] transition-all ease-in-out duration-75 cursor-pointer active:scale-100 grayscale hover:grayscale-0">
-                </a>
-            </div>
+        <div class="w-full h-fit flex flex-col md:flex-row gap-5">
+            @for(team of (teams$ | async); track team.shortName; let i = $index){
+                <div class="flex flex-row md:flex-col gap-2 items-center">
+                    <img class="w-12 h-14" src="{{team.logo_url}}">
+                    <span class="font-[IndustryBaby] text-center text-white text-lg md:text-lg">
+                        {{ team.city }}
+                    </span>
+                </div>
+            }
         </div>
     </div>
+
+    <br>
     
+    <div class="w-[60%] self-center">
+
+    </div>
+
+    <br>
+
+    <div class="w-[60%] self-center">
+        <hr class="text-white">
+    </div>
+
+    <br>
+
+    <div class="w-[60%] self-center">
+
+    </div>
 </div>

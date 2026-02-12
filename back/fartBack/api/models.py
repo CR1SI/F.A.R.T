@@ -6,6 +6,7 @@ from django.dispatch import receiver
 class Team(models.Model):
     name = models.CharField(max_length=50)
     shortName = models.CharField(max_length=10)
+    city = models.CharField(max_length=40, blank=True, null=True)
     logo_url = models.URLField(blank=True, null=True)
     players = models.JSONField(default=list, blank=True)
     losses = models.PositiveIntegerField(default=0)
